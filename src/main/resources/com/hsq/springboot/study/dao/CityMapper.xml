@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hsq.springboot.study.dao.CityMapper">
+	<resultMap id="BaseResultMap" type="com.hsq.springboot.study.domain.City">
+		<result column="id" property="id" />
+		<result column="province_id" property="provinceId" />
+		<result column="city_name" property="cityName" />
+		<result column="description" property="description" />
+	</resultMap>
+
+
+	<sql id="Base_Column_List">
+		id, province_id, city_name, description
+	</sql>
+
+	<select id="getById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from city
+		where id = #{id}
+	</select>
+	
+	<insert id="insert"  parameterType="City">
+		insert City(id,province_id,city_name,description) values(#{id},#{provinceId},#{cityName},#{description})
+	</insert>
+	
+   <select id="all" resultMap="BaseResultMap" parameterType="com.hsq.springboot.study.domain.RQ_City">
+		select
+		<include refid="Base_Column_List" />
+		from city
+		<where>
+		    <if test="cityId !=null">
+		       and  Id=#{cityId}
+		   </if>
+		    <if test="descripton !=null">
+		       and Description like "%"#{descripton}"%"
+		   </if>
+		</where>
+	</select>
+	
+	<delete id="deletebyId" parameterType="long">
+	  delete from  City where id = #{id}
+	</delete>
+   
+	
+</mapper>

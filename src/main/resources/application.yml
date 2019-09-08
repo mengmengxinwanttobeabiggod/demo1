@@ -1,0 +1,54 @@
+#数据源配置
+spring :
+   cache:
+    type: redis
+  
+   datasource:
+     type: com.zaxxer.hikari.HikariDataSource
+     driver-class-name: com.mysql.jdbc.Driver
+     url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8  #数据源配置
+     username: root  #用户名
+     password: root  #用户名密码
+     hikari:
+      maximum-pool-size: 3
+      auto-commit: false
+      
+   activiti:
+    rest-api-enabled: false
+    database-schema-update: true
+    jpa-enabled: false
+    job-executor-activate: false
+    async-executor-activate: true
+    async-executor-enabled: true   
+    db-history-used: false
+    history-level: none
+  
+   redis:
+    host: 192.168.0.111
+    port: 6379
+    password:    
+   jedis:
+             pool:
+             max-active: 1024
+             min-idle: 4
+             max-wait: 10000   
+#mybatis配置
+mybatis:
+  config-location: classpath:mybatis-config.xml
+         
+         
+server:   
+  error:
+    whitelabel:
+      enabled: true
+  display-name: " my spring boot"
+  port: 9099  #默认是8080
+  servlet:
+    path: /
+
+
+#日志配置
+logging:
+  level:
+       root: debug  #配置logging.level.*来具体输出哪些包的日志级别
+debug: true  #默认情况下，spring boot从控制台打印出来的日志级别只有ERROR, WARN 还有INFO，如果你想要打印debug级别的日志，可以通过application.properites配置debug=true
