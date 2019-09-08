@@ -8,6 +8,7 @@ public class FirstServiceImpl {
 	public String  getName(String name)
 	{
 		System.out.println(name);
+		System.out.println("git 1");
 		return name+",hsq";
 	}
 }
