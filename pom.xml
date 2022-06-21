@@ -13,7 +13,7 @@
 
     <properties>
         <mybatis-spring-boot>1.2.0</mybatis-spring-boot>
-        <mysql-connector>5.1.39</mysql-connector>
+        <mysql-connector>8.0.28</mysql-connector>
         <commons-lang3>3.5</commons-lang3>
          <java.version>1.8</java.version>
          <activiti.version>5.22.0</activiti.version>
